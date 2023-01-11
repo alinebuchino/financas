@@ -1,13 +1,48 @@
-import { StyleSheet, Text, View } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 import Header from '../../components/Header';
+import Balance from '../../components/Balance';
+import Movements from '../../components/Movements';
+
+const list = [
+    {
+        id: 1,
+        label: "Boleto conta luz",
+        value: '250,00',
+        data: '10/01/2023',
+        type: 0
+    },
+    {
+        id: 2,
+        label: "Pix cliente Maria",
+        value: '1600,00',
+        data: '11/01/2023',
+        type: 1
+    },
+    {
+        id: 3,
+        label: "Salário",
+        value: '4.500',
+        data: '12/01/2023',
+        type: 1
+    },
+]
 
 export default function Home() {
     return (
         <View style={styles.container}>
-            <Header name="Aline Buchino"/>
-            <Text>Home</Text>
-            {/* <StatusBar style='light'/> CASO QUEIRA MODIFICAR A COR DO STATUS BAR DO IOS*/}
+            <Header name="Aline Buchino" />
+
+            <Balance saldo="7.437,00" gastos="-2.285,00" />
+
+            <Text style={styles.title}>Últimas movimentações</Text>
+
+            <FlatList
+                style={styles.list}
+                data={list}
+                keyExtractor={(item) => String(item.id)}
+                showsVerticalScrollIndicator={false}
+                renderItem={({item}) => <Movements data={item}/>}
+            />
         </View>
     );
 }
@@ -15,6 +50,17 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#fafafa',
     },
+    title: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginLeft: 14,
+        marginRight: 14,
+        marginTop: 14
+    },
+    list: {
+        marginRight:14,
+        marginLeft:14
+    }
 });

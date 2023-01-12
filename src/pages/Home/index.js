@@ -7,16 +7,16 @@ const list = [
     {
         id: 1,
         label: "Boleto conta luz",
-        value: '250,00',
+        value: '250,50',
         data: '10/01/2023',
-        type: 0
+        type: 0 // despesas
     },
     {
         id: 2,
         label: "Pix cliente Maria",
         value: '1600,00',
         data: '11/01/2023',
-        type: 1
+        type: 1 // receita / entrada
     },
     {
         id: 3,
@@ -55,9 +55,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 18,
         fontWeight: 'bold',
-        marginLeft: 14,
-        marginRight: 14,
-        marginTop: 14
+        margin:14
     },
     list: {
         marginRight:14,
